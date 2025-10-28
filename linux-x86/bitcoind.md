@@ -1,4 +1,4 @@
-# Bitcoin node for Linux-x86
+# Bitcoin node for Linux/x86
 
 คู่มือนี้จะใช้ Bitcoin Core ติดตั้งคุณสามารถตรวจสอบเวอร์ชั่นล่าสุดได้ที่ https://bitcoincore.org/en/download/
 
@@ -619,3 +619,9 @@ bitcoind-cli --version
 ```bash
 sudo systemctl restart bitcoind
 ```
+
+
+
+[Electrs >>](./electrs.md)
+
+[Back to Linux/x86 README](./README.md)

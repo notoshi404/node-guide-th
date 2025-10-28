@@ -619,3 +619,9 @@ bitcoind-cli --version
 ```bash
 sudo systemctl restart bitcoind
 ```
+
+
+
+[Electrs >>](./electrs.md)
+
+[Back to Raspberry Pi README](./README.md)

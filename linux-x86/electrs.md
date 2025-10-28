@@ -313,3 +313,12 @@ sudo cat /var/lib/tor/electrs/hostname
 $ sudo cat /var/lib/tor/electrs/hostname
 <tor-address>.onion
 ```
+
+
+
+
+[<< Bitcoin Core](./bitcoind.md)
+
+[BTC RPC Explorer >>](./explorer.md)
+
+[Back to Linux/x86 README](./README.md)

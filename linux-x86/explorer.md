@@ -248,3 +248,9 @@ sudo cat /var/lib/tor/bitcoinexplorer/hostname
 $ sudo cat /var/lib/tor/bitcoinexplorer/hostname
 <tor-address>.onion
 ```
+
+
+
+[<< Electrs](./electrs.md)
+
+[Back to Linux/x86 README](./README.md)

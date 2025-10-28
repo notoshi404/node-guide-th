@@ -284,6 +284,45 @@ sudo rm -r bitcoin-$VERSION bitcoin-$VERSION-aarch64-linux-gnu.tar.gz SHA256SUMS
 
 
 
+### สร้าง RPCAUTH
+
+โปรแกรมอื่นจะเรียกใช้ Bitcoin Core RPC ได้ต้องมีข้อมูลยืนยันตัวตน แทนการเก็บรหัสผ่านเป็นข้อความธรรมดา เราจะสร้างค่า rpcauth ซึ่งเป็นรหัสผ่านแบบแฮชด้วยเครื่องมือจาก Bitcoin Core
+
+เข้าโฟลเดอร์ข้อมูล Bitcoin
+
+```bash
+cd .bitcoin
+```
+
+ดาวน์โหลดโปรแกรมสร้าง rpcauth
+
+```bash
+wget https://raw.githubusercontent.com/bitcoin/bitcoin/master/share/rpcauth/rpcauth.py
+```
+
+รันสคริปต์ด้วย Python3 เพื่อสร้าง rpcauth
+
+```bash
+ python3 rpcauth.py user psassword
+``` 
+
+> [!NOTE]
+> อย่าลืมเปลี่่ยน user กับ password ในแบบที่คุณต้องการ
+
+output
+```
+$ python3 rpcauth.py user psassword
+String to be appended to bitcoin.conf:
+rpcauth=user:8f9515057c2485246c728448090714f5$4eb38c9e1e8efa0186a26b2355220698b33dd538f49dd5e225bbe4dc8430facd
+Your password:
+psassword
+```
+
+คัดลอกบรรทัด rpcauth=... ที่สคริปต์แสดง แล้ววางเพิ่มในไฟล์ bitcoin.conf ของคุณ เพื่อให้ Bitcoin Core ยอมรับการเชื่อมต่อด้วย username นั้นโดยใช้รหัสผ่านที่ถูกแฮชแล้ว
+
+
+
+
 ### ตั้งค่า bitcoin.conf
 
 ตัวไฟล์คอนฟิกจะตั้งค่าไว้ให้ใช้ Tor อย่างเดียวเพื่อเชื่อมต่อ peer อาจทำให้ซิงค์ช้าลง
@@ -309,6 +348,8 @@ rpcallowip=127.0.0.1
 rpcallowip=10.0.0.0/8
 rpcallowip=172.0.0.0/8
 rpcallowip=192.0.0.0/8
+
+rpcauth=user:8f9515057c2485246c7284480
 
 # Network (Tor-only)
 listen=1
@@ -455,6 +496,7 @@ Apr 19 14:10:16 node systemd[1]: Started bitcoind.service - Bitcoin daemon.
 ```bash
 sudo systemctl restart bitcoind
 ```
+
 หลังจาก restart เสร็จควรตรวจสอบสถานะทุกครั้ง
 
 ```bash
@@ -552,7 +594,7 @@ wget https://bitcoincore.org/bin/bitcoin-core-$VERSION/bitcoin-$VERSION-aarch64-
 ```
 
 > [!NOTE]
-ตรวจสอบลายเซ็นของผู้พัฒนาตามขั้นตอนข้างต้น
+> ตรวจสอบลายเซ็นของผู้พัฒนาตามขั้นตอนข้างต้น
 
 แตกไฟล์ Bitcoin core
 

@@ -35,9 +35,9 @@ Repo นี้เป็นคู่มือสำหรับผู้ที่
 
 คู่มือนี้จะแนะนำการติดตั้งซอฟต์แวร์ต่างๆ ดังนี้:
 
-*   **Bitcoin Core:** ซอฟต์แวร์ Bitcoin node หลัก
-*   **Electrum Server (Electrs):** เซิร์ฟเวอร์ที่ช่วยให้ Wallet เชื่อมต่อกับโหนดของคุณได้เร็วขึ้น
-*   **Explorer (btc-rpc-explorer):** เครื่องมือสำรวจบล็อกเชนส่วนตัว
+*   **[Bitcoin Core](https://github.com/bitcoin/bitcoin):** ซอฟต์แวร์ Bitcoin node หลัก
+*   **[Electrum Server (Electrs)](https://github.com/romanz/electrs):** เซิร์ฟเวอร์ที่ช่วยให้ Wallet เชื่อมต่อกับโหนดของคุณได้เร็วขึ้น
+*   **[Explorer (btc-rpc-explorer)](https://github.com/janoside/btc-rpc-explorer):** เครื่องมือสำรวจบล็อกเชนส่วนตัว
 *   **Lightning Network:** จะมีในอนาคต โปรดรอ
 
 ## การมีส่วนร่วม

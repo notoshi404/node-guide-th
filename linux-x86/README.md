@@ -5,5 +5,7 @@ This guide provides instructions for setting up a Bitcoin node on a Linux/x86 ma
 ## Guides
 
 * [Bitcoin Core](./bitcoind.md)
+* [Electrum Server (Electrs)](./electrs.md)
+* [Explorer](./explorer.md)
 
 [Back to main README](../README.md)

@@ -333,9 +333,9 @@ dbcache=2048
 
 
 
-### สร้างไฟล์ system service
+### สร้าง Systemd service
 
-การสร้าง System Service เพื่อให้ระบบสามารถเรียกใช้ bitcoin daemon โดยอัตโนมัติในพื้นหลังได้หลังปิด-เปิดเครื่อง
+การสร้าง Systemd Service เพื่อให้ระบบสามารถเรียกใช้ bitcoin daemon โดยอัตโนมัติในพื้นหลังได้หลังปิด-เปิดเครื่อง
 
 ```bash
 sudo nano /etc/systemd/system/bitcoind.service

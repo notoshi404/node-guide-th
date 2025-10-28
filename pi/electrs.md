@@ -314,10 +314,9 @@ $ sudo cat /var/lib/tor/electrs/hostname
 <tor-address>.onion
 ```
 
-
-
-[<< Bitcoin Core](./bitcoind.md)
-
-[BTC RPC Explorer >>](./explorer.md)
+<div style="display: flex; justify-content: space-between;">
+  <a href="./bitcoind.md">&lt;&lt; Bitcoin Core</a>
+  <a href="./explorer.md">BTC RPC Explorer &gt;&gt;</a>
+</div>
 
 [Back to Raspberry Pi README](./README.md)

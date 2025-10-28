@@ -317,8 +317,10 @@ $ sudo cat /var/lib/tor/electrs/hostname
 
 
 
-[<< Bitcoin Core](./bitcoind.md)
+<div style="display: flex; justify-content: space-between;">
+  <a href="./bitcoind.md">&lt;&lt; Bitcoin Core</a>
+  <a href="./explorer.md">BTC RPC Explorer &gt;&gt;</a>
+</div>
 
-[BTC RPC Explorer >>](./explorer.md)
 
 [Back to Linux/x86 README](./README.md)

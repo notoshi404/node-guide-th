@@ -250,7 +250,8 @@ $ sudo cat /var/lib/tor/bitcoinexplorer/hostname
 ```
 
 
-
-[<< Electrs](./electrs.md)
+<div style="display: flex; justify-content: flex-start;">
+  <a href="./electrs.md">&lt;&lt; Electrs</a>
+</div>
 
 [Back to Raspberry Pi README](./README.md)

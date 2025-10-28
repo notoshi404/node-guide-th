@@ -621,7 +621,8 @@ sudo systemctl restart bitcoind
 ```
 
 
-
-[Electrs >>](./electrs.md)
+<div style="display: flex; justify-content: flex-end;">
+  <a href="./electrs.md">Electrs &gt;&gt;</a>
+</div>
 
 [Back to Raspberry Pi README](./README.md)

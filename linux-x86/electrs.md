@@ -154,7 +154,6 @@ daemon_p2p_addr = "127.0.0.1:8333"
 electrum_rpc_addr = "0.0.0.0:50001"
 db_dir = "/home/username/electrs/db"
 
-timestamp = true
 log_filters = "INFO"
 
 ```

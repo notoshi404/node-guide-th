@@ -231,7 +231,7 @@ tar -xzvf bitcoin-$VERSION-aarch64-linux-gnu.tar.gz
 ติดตั้ง Bitcoin core
 
 ```bash
-sudo install -m 0755 -o root -g root -t /usr/local/bin bitcoin-30.0/bin/bitcoin-cli bitcoin-30.0/bin/bitcoind
+sudo install -m 0755 -o root -g root -t /usr/local/bin bitcoin-$VERSION/bin/bitcoin-cli bitcoin-$VERSION/bin/bitcoind
 ```
 
 ตรวจสอบเวอร์ชั่น

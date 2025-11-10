@@ -1,14 +1,25 @@
 # วิธีติดตั้ง Docker
 
+## Docker คืออะไร?
+Docker เป็นแพลตฟอร์มที่ใช้สำหรับพัฒนา จัดส่ง และรันแอปพลิเคชัน โดยใช้เทคโนโลยี Container ที่แยกแอปพลิเคชันออกจากโครงสร้างพื้นฐาน ทำให้สามารถติดตั้งและรันแอปพลิเคชันได้อย่างรวดเร็วและสม่ำเสมอในทุกสภาพแวดล้อม
+
+### ข้อดีของการใช้ Docker
+- **ความสะดวก**: ติดตั้งและรันแอปพลิเคชันได้ง่าย
+- **ความเสถียร**: ทำงานเหมือนกันในทุกสภาพแวดล้อม
+- **ประสิทธิภาพ**: ใช้ทรัพยากรน้อยกว่า Virtual Machine
+- **ความยืดหยุ่น**: ปรับแต่งและอัพเดทได้ง่าย
+
+
+
 
 
 ## วิธีติดตั้ง
 
-คุณสามารถไปเอกสารประกอบทางการเองได้ที่ https://docs.docker.com/engine/install/ แต่ในคู่มือนี้เราจะใช้วิธีที่ง่ายที่สุด
+คุณสามารถดูเอกสารประกอบการติดตั้งอย่างเป็นทางการได้ที่ https://docs.docker.com/engine/install/ แต่ในคู่มือนี้เราจะใช้วิธีที่ง่ายที่สุด
 
-### ดาวโหลดสคริปและติดตั้ง
+### ดาวน์โหลดสคริปต์และติดตั้ง
 
-ดาวโหลดสคริป
+ดาวน์โหลดสคริปต์
 
 ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -35,7 +46,7 @@ sudo systemctl status docker
 
 ### วิธีตั้งค่าให้ใช้คำสั่ง docker โดยไม่ได้ใช้ sudo
 
-โดยเริ่มต้นคำสั่ง docker จำเป็นต้องใช้สิทธิ์ root หรือใช้ sudo ในการรันคำสั่ง เราจะมาตั้งให้มาอยู่กลุ่มเดียวกันโดยใช้คำสั่งนี้
+โดยเริ่มต้น คำสั่ง Docker จำเป็นต้องใช้สิทธิ์ root หรือใช้ sudo ในการรันคำสั่ง เราจะมาตั้งค่าให้อยู่ในกลุ่มเดียวกันโดยใช้คำสั่งนี้
 
 ```bash
 sudo usermod -aG docker ${USER}
@@ -47,13 +58,33 @@ sudo usermod -aG docker ${USER}
 su - ${USER}
 ```
 
-ทดสอบคำสั่ง
+ทดสอบคำสั่ง:
 
 ```bash
 docker ps
 ```
 
+### การตรวจสอบการติดตั้ง
+หลังจากติดตั้งเสร็จ ควรตรวจสอบว่าระบบทำงานถูกต้องโดย:
+ตรวจสอบว่า Docker daemon ทำงาน:
 
+```bash 
+sudo systemctl status docker
+```
+
+ทดสอบดาวน์โหลด image:
+
+```bash
+docker pull hello-world
+```
+
+ทดสอบรัน container:
+
+```bash
+docker run hello-world
+```
+
+---
 
 ## คำสั่งพื้นฐาน Docker
 
@@ -79,15 +110,21 @@ docker ps
 
 ---
 
-**หมายเหตุเพิ่มเติม**
-- `-d` → รันเบื้องหลัง (detached mode)  
-- `--name` → ตั้งชื่อ container  
-- `-p` → เปิดพอร์ต เช่น `-p 8080:80`  
-- `-v` → mount โฟลเดอร์ เช่น `-v /data:/app/data`  
+### พารามิเตอร์ที่ใช้บ่อย
+- `-d` → รันเบื้องหลัง (detached mode)
+- `--name` → ตั้งชื่อ container
+- `-p` → เปิดพอร์ต เช่น `-p 8080:80` (host_port:container_port)
+- `-v` → mount โฟลเดอร์ เช่น `-v /host/data:/container/data`
+- `-e` → กำหนดค่าตัวแปรสภาพแวดล้อม เช่น `-e MYSQL_ROOT_PASSWORD=secret`
+- `--restart` → กำหนดนโยบายการรีสตาร์ท เช่น `--restart always`
 
 ---
 
-**อ้างอิง:**  
-[Docker CLI Reference](https://docs.docker.com/engine/reference/commandline/docker/)
+**แหล่งข้อมูลเพิ่มเติม:**
+- [Docker Documentation](https://docs.docker.com/)
+- [Docker CLI Reference](https://docs.docker.com/engine/reference/commandline/docker/)
+- [Docker Compose Documentation](https://docs.docker.com/compose/)
+- [Docker Hub](https://hub.docker.com/) - แหล่งรวม Docker Images
+- [Docker Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
 

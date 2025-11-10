@@ -2,6 +2,8 @@
 
 This guide provides instructions for setting up a Bitcoin node using Docker.
 
-*Coming soon...*
+## Guides
+
+* [Installation](./install.md)
 
 [Back to main README](../README.md)

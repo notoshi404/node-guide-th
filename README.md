@@ -30,7 +30,7 @@ Repo นี้เป็นคู่มือสำหรับผู้ที่
 1.  [**Raspberry Pi**](./pi/README.md): เหมาะสำหรับผู้ที่ต้องการรันโหนดบนอุปกรณ์ขนาดเล็กและประหยัดพลังงาน
 2.  [**Linux/x86**](./linux-x86/README.md): เหมาะสำหรับผู้ที่ต้องการรันโหนดบนคอมพิวเตอร์ส่วนบุคคลหรือเซิร์ฟเวอร์ที่ใช้ระบบปฏิบัติการ Linux
 3.  [**Docker**](./docker/README.md): เหมาะสำหรับผู้ที่คุ้นเคยกับ Docker และต้องการติดตั้งโหนดในสภาพแวดล้อมแบบ container
-4.  [**อื่น ๆ**](./other/mempool.md): คู่มืออื่น ๆ
+4.  [**อื่น ๆ**](./other/README.md): คู่มืออื่น ๆ
 
 ## คู่มือนี้มีอะไรบ้าง
 
@@ -39,7 +39,6 @@ Repo นี้เป็นคู่มือสำหรับผู้ที่
 *   **[Bitcoin Core](https://github.com/bitcoin/bitcoin):** ซอฟต์แวร์ Bitcoin node หลัก
 *   **[Electrum Server (Electrs)](https://github.com/romanz/electrs):** เซิร์ฟเวอร์ที่ช่วยให้ Wallet เชื่อมต่อกับโหนดของคุณได้เร็วขึ้น
 *   **[Explorer (btc-rpc-explorer)](https://github.com/janoside/btc-rpc-explorer):** เครื่องมือสำรวจบล็อกเชนส่วนตัว
-*   **[Mempool](https://mempool.space):** เครื่องมือสำรวจ Mempool และบล็อกเชน
 *   **Lightning Network:** จะมีในอนาคต โปรดรอ
 
 ## การมีส่วนร่วม

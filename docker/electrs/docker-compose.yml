@@ -1,0 +1,23 @@
+services:
+  electrs:
+    container_name: electrs
+    image: local/electrs:${VERSION}
+    restart: unless-stopped
+    user: "${UID}:${GID}"
+    network_mode: "host"
+    environment:
+      TZ: Asia/Bangkok
+      ELECTRS_LOG_FILTERS: ${ELECTRS_LOG_FILTERS}
+      ELECTRS_NETWORK: ${ELECTRS_NETWORK}
+      ELECTRS_DB_DIR: ${ELECTRS_DB_DIR}
+      ELECTRS_DAEMON_DIR: ${ELECTRS_DAEMON_DIR}
+      ELECTRS_DAEMON_RPC_ADDR: ${ELECTRS_DAEMON_RPC_ADDR}
+      ELECTRS_DAEMON_P2P_ADDR: ${ELECTRS_DAEMON_P2P_ADDR}
+      ELECTRS_ELECTRUM_RPC_ADDR: ${ELECTRS_ELECTRUM_RPC_ADDR}
+    volumes:
+      - "path-to-electrs-db-on-host:${ELECTRS_DB_DIR}"
+      - "path-to-bitcoin-data-on-host:${ELECTRS_DAEMON_DIR}"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"

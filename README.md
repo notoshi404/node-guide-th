@@ -39,6 +39,7 @@ Repo นี้เป็นคู่มือสำหรับผู้ที่
 *   **[Bitcoin Core](https://github.com/bitcoin/bitcoin):** ซอฟต์แวร์ Bitcoin node หลัก
 *   **[Electrum Server (Electrs)](https://github.com/romanz/electrs):** เซิร์ฟเวอร์ที่ช่วยให้ Wallet เชื่อมต่อกับโหนดของคุณได้เร็วขึ้น
 *   **[Explorer (btc-rpc-explorer)](https://github.com/janoside/btc-rpc-explorer):** เครื่องมือสำรวจบล็อกเชนส่วนตัว
+*   **[Mempool.space](https://mempool.space):** เครื่องมือสำรวจ Mempool และบล็อกเชน
 *   **Lightning Network:** จะมีในอนาคต โปรดรอ
 
 ## การมีส่วนร่วม

@@ -67,8 +67,7 @@ local/electrs         v0.10.9   1b22aef2becb   3 months ago   111MB
 `${USER}` ในที่นี้จะหมายถึง user ของ host machine ที่ใช้ build docker image
 
 ### Start docker container
-
-ใช้คำสั่ง `docker compose up -d` เพื่อเริ่ม container
+เข้าไปที่ [run](run) แล้วใช้คำสั่ง `docker compose up -d` เพื่อเริ่ม container
 
 ```
 docker compose up -d

@@ -11,7 +11,7 @@ services:
       - TZ=Asia/Bangkok
     volumes:
       - ${HOST_DATA_DIR}:/data/.bitcoin/
-      - ${HOST_TOR_AUTH_COOKIE}:/run/tor/control.authcookie:ro
+      - ${TOR_AUTH_COOKIE_FILE}:/run/tor/control.authcookie:ro
     stop_grace_period: 15m30s
     logging:
       driver: "json-file"

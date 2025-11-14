@@ -6,7 +6,7 @@
 - สถานะของ Mempool
 - ค่าธรรมเนียมที่แนะนำ (Fee Estimates)
 
-ด้วยการออกแบบ UX/UI ที่เรียบง่าย สวยงาม และใช้งานสะดวก จึงนิยมในกลุ่ม Bitcoinner
+ด้วยการออกแบบ UX/UI ที่เรียบง่าย สวยงาม และใช้งานสะดวก จึงได้รับความนิยมในกลุ่ม Bitcoinner
 
 
 **สิ่งที่ต้องมีก่อนการติดตั้ง**
@@ -212,3 +212,133 @@ docker compose up -d
 
 > [!NOTE]
 > หลังจาก Container ทำงานแล้ว ให้เข้าบราวเซอร์เพื่อตรวจสอบได้เลยที่ `<ip>:8888`
+
+
+
+
+### สร้างไฟล์ `docker-compose.yml` ที่ปลอดภัยกว่า
+
+`docker-compose.yml` อันเดิมสังเกตได้ว่าจะมีการใส่ UESR/PASS ด้วยหากใส่ในไฟล์ตรง ๆ เลยอาจปลอดภัยไม่มากพอ อีกหนึ่งตัวเลือกคือการใช้ไฟล์ `.env` ประกอบด้วยจะปลอดภัยมากขึ้น
+
+หากรัน Container อยู่ให้ลบออกก่อน
+ใช้คำสั่งนี้:
+
+```bash
+docker compose down
+```
+
+แก้ไข้ไฟล์ `docker-compose.yml`
+
+```bash
+nano docker-compose.yml
+```
+
+ลบค่าเดิมออกและใส่ค่าใหม่ตามนี้:
+
+```
+version: "3.8"
+
+services:
+  web:
+    image: mempool/frontend:latest
+    user: "1000:1000"
+    restart: always
+    stop_grace_period: 1m
+    ports:
+      - "${MEMPOOL_PORT}:8080"
+    command: "./wait-for db:3306 --timeout=720 -- nginx -g 'daemon off;'"
+    environment:
+      FRONTEND_HTTP_PORT: "8080"
+      BACKEND_MAINNET_HTTP_HOST: "api"
+
+  api:
+    image: mempool/backend:latest
+    user: "1000:1000"
+    restart: always
+    stop_grace_period: 1m
+    command: "./wait-for-it.sh db:3306 --timeout=720 --strict -- ./start.sh"
+    volumes:
+      - ./data:/backend/cache
+    environment:
+      MEMPOOL_BACKEND: "${MEMPOOL_BACKEND}"
+      CORE_RPC_HOST: "${CORE_RPC_HOST}"
+      CORE_RPC_PORT: "${CORE_RPC_PORT}"
+      CORE_RPC_USERNAME: "${CORE_RPC_USERNAME}"
+      CORE_RPC_PASSWORD: "${CORE_RPC_PASSWORD}"
+      ELECTRUM_HOST: "${ELECTRUM_HOST}"
+      ELECTRUM_PORT: "${ELECTRUM_PORT}"
+      ELECTRUM_TLS_ENABLED: "${ELECTRUM_TLS_ENABLED}"
+      DATABASE_ENABLED: "${DATABASE_ENABLED}"
+      DATABASE_HOST: "${DATABASE_HOST}"
+      DATABASE_DATABASE: "${DATABASE_DATABASE}"
+      DATABASE_USERNAME: "${DATABASE_USERNAME}"
+      DATABASE_PASSWORD: "${DATABASE_PASSWORD}"
+      STATISTICS_ENABLED: "${STATISTICS_ENABLED}"
+
+  db:
+    image: mariadb:10.5.21
+    user: "1000:1000"
+    restart: always
+    stop_grace_period: 1m
+    environment:
+      MYSQL_DATABASE: "${DATABASE_DATABASE}"
+      MYSQL_USER: "${DATABASE_USERNAME}"
+      MYSQL_PASSWORD: "${DATABASE_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${DATABASE_ROOT_PASSWORD}"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+
+networks:
+  mempoolnet:
+    driver: bridge
+```
+
+สร้างไฟล์ `.env`
+
+```bash
+nano .env
+```
+
+ใส่ค่าตามนี้:
+
+```
+## mempool
+MEMPOOL_PORT=8888
+MEMPOOL_BACKEND=electrum
+
+## Bitcoin Core
+CORE_RPC_HOST=172.17.0.1
+CORE_RPC_PORT=8332
+CORE_RPC_USERNAME=<USER>
+CORE_RPC_PASSWORD=<PASS>
+
+## Electrum server
+ELECTRUM_HOST=172.17.0.1
+ELECTRUM_PORT=50001
+ELECTRUM_TLS_ENABLED=false
+
+## Database
+DATABASE_ENABLED=true
+DATABASE_HOST=db
+DATABASE_DATABASE=mempool
+DATABASE_USERNAME=mempool
+DATABASE_PASSWORD=mempool
+DATABASE_ROOT_PASSWORD=admin
+STATISTICS_ENABLED=true
+```
+
+> [!NOTE] 
+> อย่าลืมเปลี่ยน USER/PASS ในส่วน CORE_RPC
+
+เมื่อแก้ไขเสร็จสั่งรัน Container 
+
+```bash
+docker compose up -d
+```
+
+---
+
+[Back to main README](../README.md)
+
+
+

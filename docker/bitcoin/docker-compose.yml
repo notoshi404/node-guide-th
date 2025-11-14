@@ -1,0 +1,19 @@
+services:
+  bitcoind:
+    container_name: bitcoind
+    image: ${IMAGE_NAME}:${VERSION}
+    restart: unless-stopped
+    network_mode: "host"
+    user: ${UID}:${GID}
+    group_add:
+      - ${TOR_GID}
+    environment:
+      - TZ=Asia/Bangkok
+    volumes:
+      - ${HOST_DATA_DIR}:/data/.bitcoin/
+      - ${HOST_TOR_AUTH_COOKIE}:/run/tor/control.authcookie:ro
+    stop_grace_period: 15m30s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"

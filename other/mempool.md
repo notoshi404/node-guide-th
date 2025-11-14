@@ -48,6 +48,18 @@ sudo ufw reload
 
 
 
+### ตรวจสอบไฟล์ `bitcoin.conf`
+ 
+ตรวจสอบว่าได้ใส่ค่า 3 อย่างนี้ไว้ไหม หาไม่มีเพิ่มเข้าไปในไฟล์ `bitcoin.conf`
+
+```
+txindex=1
+blockfilterindex=1
+coinstatsindex=1
+```
+
+
+
 ### ดาวน์โหลดซอร์สโค้ดโดยตรงจาก GitHub
 
 [GitHub mempool.space](https://github.com/mempool/mempool)
@@ -334,6 +346,62 @@ STATISTICS_ENABLED=true
 
 ```bash
 docker compose up -d
+```
+
+---
+
+## ตั้งค่า Hiddenservice Tor
+
+เพิ่ม Hiddenservice เพื่อให้เข้าถึง Mempool.space ผ่าน Tor ได้
+
+
+เพิ่มค่า Tor configuration
+
+```bash
+sudo nano /etc/tor/torrc
+```
+
+เพิ่ม configuration
+
+```
+# BTC RPC Explorer
+HiddenServiceDir /var/lib/tor/mempool
+HiddenServiceVersion 3
+HiddenServicePort 8888 127.0.0.1:8888
+HiddenServiceEnableIntroDoSDefense 1
+```
+
+สร้าง Directory สำหรับ Hidden Service
+
+```bash
+sudo mkdir -p /var/lib/tor/bitcoinexplorer
+```
+
+เปลี่ยน Ownership และ Permissions ของ Directory
+
+```bash
+sudo chown -R debian-tor:debian-tor /var/lib/tor/mempool
+```
+
+```bash
+sudo chmod 700 /var/lib/tor/mempool
+```
+
+restart tor
+
+```bash
+restart Tor
+```
+
+วิธีตรวจสอบ Tor address
+
+```bash
+sudo cat /var/lib/tor/mempool/hostname
+```
+
+```
+$ sudo cat /var/lib/tor/mempool/hostname
+<tor-address>.onion
 ```
 
 ---

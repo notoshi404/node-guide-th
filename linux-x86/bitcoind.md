@@ -341,6 +341,8 @@ nano ~/.bitcoin/bitcoin.conf
 # Bitcoin Core
 daemon=1
 txindex=1
+blockfilterindex=1
+coinstatsindex=1
 
 # RPC
 server=1
@@ -350,7 +352,6 @@ rpcallowip=127.0.0.1
 rpcallowip=10.0.0.0/8
 rpcallowip=172.0.0.0/8
 rpcallowip=192.0.0.0/8
-
 rpcauth=user:8f9515057c2485246c7284480 
 
 # Network (Tor-only)

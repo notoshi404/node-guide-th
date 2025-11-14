@@ -73,6 +73,18 @@ sudo ufw reload
 
 
 
+### ตรวจสอบไฟล์ `bitcoin.conf`
+ 
+ตรวจสอบว่าได้ใส่ค่า 3 อย่างนี้ไว้ไหม หาไม่มีให้เพิ่มเข้าไปในไฟล์ `bitcoin.conf`
+
+```
+txindex=1
+blockfilterindex=1
+coinstatsindex=1
+```
+
+
+
 ### ติดตั้ง BTC RPC Explorer
 
 ดาวน์โหลดซอร์สโค้ดโดยตรงจาก GitHub แล้วเข้าไปที่โฟลเดอร์ btc-rpc-explorer

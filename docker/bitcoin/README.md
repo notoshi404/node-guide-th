@@ -8,8 +8,8 @@
 กำหนดค่า Environment Variables ในไฟล์ [.env](.env)
 
 #### Bitcoin
-* `UID` คือ ค่า user id ที่ใช้ run container
-* `GID` คือ ค่า group id ที่ใช้ run container
+* `UID` คือ ค่า user id ที่ใช้ run container ควรตั้งเป็น user id ของ user bitcoind ใน container ซึ่งเท่ากับ 1000
+* `GID` คือ ค่า group id ที่ใช้ run container ควรตั้งเป็น group id ของ user bitcoind ใน container ซึ่งเท่ากับ 1000
 * `IMAGE_NAME` ชื่อ image ที่ต้องการ run
 * `VERSION` คือ version ที่ต้องการ run
 * `HOST_DATA_DIR` คือ ค่า directory ที่ใช้เก็บ data ของ bitcoin ที่อยู่ใน host machine

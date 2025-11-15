@@ -7,16 +7,19 @@
 
 กำหนดค่า Environment Variables ในไฟล์ [.env](.env)
 
+#### Bitcoin
 * `UID` คือ ค่า user id ที่ใช้ run container
 * `GID` คือ ค่า group id ที่ใช้ run container
 * `IMAGE_NAME` ชื่อ image ที่ต้องการ run
 * `VERSION` คือ version ที่ต้องการ run
 * `HOST_DATA_DIR` คือ ค่า directory ที่ใช้เก็บ data ของ bitcoin ที่อยู่ใน host machine
-* `TOR_GID` คือ ค่า group id ที่ใช้ run tor ใน host machine เพื่อให้ add user ที่เราใช้ในการ run bitcoin daemon เข้า tor group เพื่ออ่านไฟล์ auth cookie ของ tor
-* `TOR_AUTH_COOKIE_FILE` คือค่า file path ที่ใช้เก็บ auth cookie ของ tor ที่อยู่ใน host machine ใช้สำหรับให้ bitcoin daemon เชื่อมต่อ tor control เพื่อ hidden service
+
+#### Tor
+* `TOR_GID` คือ ค่า group id ที่ใช้ run tor ใน host machine เพื่อให้ docker add user ที่เราใช้ในการ run เข้าไปใน tor group เพื่ออ่านไฟล์ auth cookie ของ tor
+* `TOR_AUTH_COOKIE_FILE` คือค่า file path ที่ใช้เก็บ auth cookie ของ tor ที่อยู่ใน host machine ใช้สำหรับเชื่อมต่อ tor control เพื่อ hidden service
 
 **หมายเหตุ:**
-- `TOR_GID` และ `TOR_AUTH_COOKIE_FILE` จำเป็นต้องมีค่าถ้าต้องการใช้ tor ในการ run bitcoin daemon
+- ถ้าต้องการใช้ tor จำเป็นต้องมีค่า `TOR_GID` และ `TOR_AUTH_COOKIE_FILE` ในการ run bitcoin daemon
 - ถ้าไม่ต้องการใช้ tor ในการ run bitcoin daemon ให้ลบ 2 ส่วนนี้ใน [docker-compose.yml](docker-compose.yml) ได้เลย
 ```yml
 group_add:

@@ -374,7 +374,7 @@ HiddenServiceEnableIntroDoSDefense 1
 สร้าง Directory สำหรับ Hidden Service
 
 ```bash
-sudo mkdir -p /var/lib/tor/bitcoinexplorer
+sudo mkdir -p /var/lib/tor/mempool
 ```
 
 เปลี่ยน Ownership และ Permissions ของ Directory

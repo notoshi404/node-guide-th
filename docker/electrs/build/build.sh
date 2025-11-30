@@ -1,7 +1,7 @@
 #!/bin/bash
 PATH_TO_DOCKER_FILE=./Dockerfile
 IMAGE_NAME=local/electrs
-VERSION=v0.10.9
+VERSION=master
 
 export VERSION=${VERSION}
 export UID=$(id -u)

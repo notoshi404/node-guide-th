@@ -3,18 +3,37 @@
 คู่มือนี้จะแนะนำการ run albyhub docker container จาก docker image ของ [albyhub](https://github.com/getAlby/hub)
 
 ## วิธี Run Docker Container
-### Environment Variables
+### กำหนดค่า Environment variables
 
-กำหนดค่า Environment Variables ในไฟล์ [.env](.env)
+กำหนดค่าสำหรับ Albyhub ในไฟล์ [.env](.env)
 
-#### Albyhub
 * `UID` คือ ค่า user id ที่ใช้ run container
 * `GID` คือ ค่า group id ที่ใช้ run container
 * `VERSION` คือ version ที่ต้องการ run
 * `HOST_ALBY_HUB_DATA_DIR` คือ ค่า directory ที่ใช้เก็บ data ของ albyhub ที่อยู่ใน host machine
 
-#### Bitcoind
-ถ้าต้องการเชื่อมต่อ albyhub เข้ากับ bitcoind ของตัวเอง ให้กำหนดค่า env ดังนี้
+### กำหนดค่าการเชื่อมต่อ Bitcoin Node
+กำหนดค่า `environment` สำหรับเชื่อมต่อ Bitcoin Node ในไฟล์ [docker-compose.yml](docker-compose.yml)
+
+#### ตัวเลือกที่ 1 - ใช้ค่า Default ของ Albyhub
+ไม่ต้องกำหนดค่าอะไรเพิ่มเติม ซึ่งค่า default ของ albyhub จะเชื่อมต่อไปยัง https://electrs.getalbypro.com
+
+#### ตัวเลือกที่ 2 - ใช้ค่า Esplora Server อื่น ๆ เช่น block stream หรือของตัวเอง
+ให้กำหนดค่าดังนี้
+
+```
+LDK_ESPLORA_SERVER: https://blockstream.info/api
+```
+
+#### ตัวเลือกที่ 3 - ใช้ Electrum Server ของตัวเอง
+ให้กำหนดค่าดังนี้
+
+```
+LDK_ELECTRUM_SERVER: electrum.example.com:50001
+```
+
+#### ตัวเลือกที่ 4 - ใช้ Bitcoin Node ของตัวเอง
+ให้กำหนดค่าดังนี้
 
 ```
 LDK_BITCOIND_RPC_HOST: 127.0.0.1
@@ -24,7 +43,7 @@ LDK_BITCOIND_RPC_PASSWORD: ""
 ```
 
 **หมายเหตุ**
-- ถ้าต้องการใช้ cookie file ในการ authentication ให้กำหนดค่า env ดังนี้
+- ในกรณีที่ใช้ Bitcoin Node ของตัวเองและต้องการใช้ cookie file ในการ authentication ให้กำหนดค่าดังนี้
 
 ```
 LDK_BITCOIND_RPC_USER="__cookie__"
